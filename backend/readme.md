@@ -15,3 +15,11 @@ docker container prune
 
 # Comando para apagar container e imagem
 docker container prune
+
+## Comandos para rodar o docker-compose
+
+### Comandos rodar script do compose
+docker-compose up -d
+
+### Comandos rodar apagar container criado 
+docker-compose down
