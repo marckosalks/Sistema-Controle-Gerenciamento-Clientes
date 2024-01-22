@@ -1,3 +1,0 @@
-19/01/2024 -> Criar banco de dado e as Tabelas do banco
-
--Criar banco de dados Postegres -- now 🚗
