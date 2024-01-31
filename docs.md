@@ -46,6 +46,8 @@ npm i -d @types/cors
 
 ## instalar o ts-node-dev no lugar do nodemon
 
+## Criar arq prisma .ts, declara constante que recipera o PrismaClient()
+
 ## criar o scripts para rodar o projeto 
 
 ## codei praticamente a api toda
