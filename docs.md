@@ -32,11 +32,22 @@ npx prisma migrate dev --name init
 
 ## vale o destaque, verificar se tem o postgres instalado na maquina ta(apagar ele no caso)  
 
+# Configurando a API
+
+## criar pasta src e index.ts
+
 ## instalei o express, cors e dotenv
+
+## Instalar os types do express
+npm i -d @types/express
+
+## Instalar os types do cors
+npm i -d @types/cors
+
+## instalar o ts-node-dev no lugar do nodemon
 
 ## criar o scripts para rodar o projeto 
 
 ## codei praticamente a api toda
 
 ## serviços, rotas, respositorios e controllers
-
