@@ -1,13 +1,15 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres
+  sistema-controle-usuarios:
+    image: postgres:latest
     ports:
       - "5432:5432"
+    container_name: "sistema-controle-usuarios"
+    restart: always
+    volumes:
+      - ./sistema-controle-usuarios:/var/lib/postgressql/data
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: admin 
-    volumes:
-      - ./data:/var/lib/postgresql/data
+      POSTGRES_DB: admin
