@@ -10,7 +10,7 @@ export type DataTypes = {
   phone: string 
 }
 
-export async function post(data: unknown | any){
+export async function postUser(data: unknown | any){
   const user = await prisma.user.create({
     data,
   })
