@@ -60,6 +60,8 @@ npm i bcrypt
 # Criei uma nova pasta de fazer para validar os campos do body da api 
 npm i yup
 
+## Não esta funcionando a parte de criptografia
+
 ## criar o scripts para rodar o projeto 
 
 ## codei praticamente a api toda

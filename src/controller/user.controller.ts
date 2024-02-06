@@ -8,8 +8,8 @@ export async function post(req: any, res:any) {
 
     // criptografia para senha 
     const hashPassword = await bcrypt.hash(req.body.password, 10)
-    const user = await postUser(req.body)
     req.body.password = hashPassword
+    const user = await postUser(req.body)
 
     res.status(200).send(user)
     console.log("este é o MAIS NOVO, usuário cadastrado !")
