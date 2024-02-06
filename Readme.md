@@ -1,4 +1,4 @@
-# Banco de dados  e Backend com Docker Node Typescript e Prisma
+# Banco de dados  e Backend com Docker Express Typescript e Prisma
 
 ### Me basei nesse video aqui 
 https://www.youtube.com/watch?v=gnq8ZY85UUM
@@ -16,21 +16,21 @@ npm init -y
 # instalação do prisma
 npm i prisma @prisma/client
 
-## adicionei um um novo arquivo chamado .gitignore para as pastas do banco e node_modules
+## adicionei um um novo arquivo chamado .gitignore para as pastas do  banco e node_modules
 
 ## Add arquivo do prisma
  npx prisma init
 
 ## criar tabela com a informação dos usuários(ler documentação)
 
-## Configura o env com informações do enviorment do docker-compose, user, password e database name
+## Configure o env com as mesmas informações do enviorment do docker-compose, user, password e database name
 
 # Rodamos o comando para criar as migrations 
 npx prisma migrate dev --name init
 
 # caso de erro 🩻
 
-## vale o destaque, verificar se tem o postgres instalado na maquina ta(apagar ele no caso)  
+## vale o destaque, verificar se tem o postgres instalado na maquina ta(apagar ele no caso) ou troque a porta 
 
 # Configurando a API
 
@@ -43,6 +43,8 @@ npm i -d @types/express
 
 ## Instalar os types do cors
 npm i -d @types/cors
+
+## criar o scripts para rodar o projeto 
 
 ## instalar o ts-node-dev no lugar do nodemon
 
@@ -60,10 +62,30 @@ npm i bcrypt
 # Criei uma nova pasta de fazer para validar os campos do body da api 
 npm i yup
 
-## Não esta funcionando a parte de criptografia
+## retornando apenas o que desejo
 
-## criar o scripts para rodar o projeto 
+## criei uma função para validar o que estou enviando assim as criticas são tratadas ao serem retornadas 
 
-## codei praticamente a api toda
+## Agora que o post já está funcionando, posso costruir os demais end-points 
 
-## serviços, rotas, respositorios e controllers
+# Passo a Passo para construir API
+
+## criar 4 pastas: 
+
+## Services: instacia do objeto prisma para demais pastas
+
+## Repositiorys: cria a função deseja do crud
+
+## Controller: Iniciar a função criada passando valores!
+
+## Routes: disponibilizar end-points
+
+### Basicamente: declare uma função asincrona para criar usuarios
+
+### passe o corpo da requisisão para a função cima criada
+
+### use um try e catch para retorno positivo e negativo 
+
+### disponibilize uma rota para usar a função mencionada no caso POST
+
+### Teste essa rota usando Insomnia
