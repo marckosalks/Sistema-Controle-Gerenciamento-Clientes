@@ -1,91 +1,36 @@
-# Banco de dados  e Backend com Docker Express Typescript e Prisma
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-### Me basei nesse video aqui 
-https://www.youtube.com/watch?v=gnq8ZY85UUM
+## Getting Started
 
-# Primeiro comando usado(criar arquivo de dependencias)
-npm init -y
+First, run the development server:
 
-## isso aqui cria um arquivo pkg.json 
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## criar  container com docker-compose como banco de dados
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## sempre mapear o volume da maneira certa colocar esse final aqui sempre:
- :/var/lib/postgresql/data
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-# instalação do prisma
-npm i prisma @prisma/client
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## adicionei um um novo arquivo chamado .gitignore para as pastas do  banco e node_modules
+## Learn More
 
-## Add arquivo do prisma
- npx prisma init
+To learn more about Next.js, take a look at the following resources:
 
-## criar tabela com a informação dos usuários(ler documentação)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Configure o env com as mesmas informações do enviorment do docker-compose, user, password e database name
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-# Rodamos o comando para criar as migrations 
-npx prisma migrate dev --name init
+## Deploy on Vercel
 
-# caso de erro 🩻
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## vale o destaque, verificar se tem o postgres instalado na maquina ta(apagar ele no caso) ou troque a porta 
-
-# Configurando a API
-
-## criar pasta src e index.ts
-
-## instalei o express, cors e dotenv
-
-## Instalar os types do express
-npm i -d @types/express
-
-## Instalar os types do cors
-npm i -d @types/cors
-
-## criar o scripts para rodar o projeto 
-
-## instalar o ts-node-dev no lugar do nodemon
-
-## Criar arq prisma .ts, declara constante que recipera o PrismaClient()
-
-## Criei uma nova pasta para controlar o retorno da função do repositório, user.controller.ts
-
-## Criei um novo arquivo chamado routes, para desponibilizar os endpoints
-
-## crei o primeiro metodo, post , testei usando o insomnia 
-
-# para criptrografia das senhas instalar o bcrypt 
-npm i bcrypt
-
-# Criei uma nova pasta de fazer para validar os campos do body da api 
-npm i yup
-
-## retornando apenas o que desejo
-
-## criei uma função para validar o que estou enviando assim as criticas são tratadas ao serem retornadas 
-
-## Agora que o post já está funcionando, posso costruir os demais end-points 
-
-# Passo a Passo para construir API
-
-## criar 4 pastas: 
-
-## Services: instacia do objeto prisma para demais pastas
-
-## Repositiorys: cria a função deseja do crud
-
-## Controller: Iniciar a função criada passando valores!
-
-## Routes: disponibilizar end-points
-
-### Basicamente: declare uma função asincrona para criar usuarios
-
-### passe o corpo da requisisão para a função cima criada
-
-### use um try e catch para retorno positivo e negativo 
-
-### disponibilize uma rota para usar a função mencionada no caso POST
-
-### Teste essa rota usando Insomnia
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
