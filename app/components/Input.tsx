@@ -1,7 +1,5 @@
 import classNames from 'classnames';
 
-import { RegisterOptions } from 'react-hook-form';
-
 type InputProps = {
   type: "text" | "password" | "email" | "number" | "date"
   className?: string
