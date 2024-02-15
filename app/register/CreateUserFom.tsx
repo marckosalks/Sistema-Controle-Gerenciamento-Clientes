@@ -3,7 +3,7 @@
 import Button from "@/app/components/Button";
 import Input from "@/app/components/Input";
 import Span from "@/app/components/Span";
-import { useState } from "react";
+
 import {useForm } from 'react-hook-form';
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,9 +11,6 @@ import { CreateUserSchemaType} from "@/types/createUserSchema";
 import { createUserSchema } from "../schemas/createUserSchema";
 
 export default function CreateUserFom() {
-  //estado para exibir conteudo do formulário
-  const [ outPut, setOutPut] = useState('')
-  
   //Aqui vou resgatar as funcionalidades do useHookForm
   const { 
     register,
@@ -24,52 +21,47 @@ export default function CreateUserFom() {
   
   //uma função para o handleSubmit
   function createUser(data:any){
-    setOutPut(JSON.stringify(data, null, 2))
+    
+    console.log("Dados da nova conta:",data)
   }
 
   return (
-    <main >
       <form onSubmit={handleSubmit(createUser)}
       className='flex flex-col gap-3 items-center'>
         
-      <div className='flex flex-col  w-[30%] gap-2'>
-        <Span label="🧹Nome:"/>
-        <Input name="nome" type="text" register={register} />
-        {errors.nome && <span className=" text-red-600">{errors.nome.message}</span>}
-      </div>
-
-      <div className='flex flex-col  w-[30%] gap-2'>
-        <Span label="🧹Email:"/>
-        <Input name='email' type="email" register={register}/>
-        {errors.email && <span className=" text-red-600">{errors.email.message}</span>}
-      </div>
-
-      <div className='flex flex-col  w-[30%] gap-2'>
-        <div className="flex items-center align-bottom justify-between">
-          <Span label="🧹Senha:"/>
-          <p className="text-xs font-bold">Senha no mínimo com 8 caracters</p>
+        <div className='flex flex-col  w-[30%] gap-2'>
+          <Span label="🧹Nome:"/>
+          <Input name="nome" type="text" register={register} />
+          {errors.nome && <span className=" text-red-600">{errors.nome.message}</span>}
         </div>
-        <Input name='password' type="password" register={register}/>
-        {errors.password && <span className=" text-red-600">{errors.password.message}</span>}
-      </div>
 
-      <div className='flex flex-col  w-[30%] gap-2'>
-        <Span label="🧹Telefone:"/>
-        <Input type="text" name='telefone' register={register} />
-        {errors.telefone && <span className=" text-red-600">{errors.telefone.message}</span>}
-      </div>
+        <div className='flex flex-col  w-[30%] gap-2'>
+          <Span label="🧹Email:"/>
+          <Input name='email' type="email" register={register}/>
+          {errors.email && <span className=" text-red-600">{errors.email.message}</span>}
+        </div>
 
-      <div className='flex flex-col  w-[30%] gap-2'>
-        <Span label="🧹Cep:"/>
-        <Input type="text" name='cep' register={register}/>
-        {errors.cep && <span className=" text-red-600">{errors.cep.message}</span>}
-      </div> 
-        <Button  type="submit" label="Enviar"/>
+        <div className='flex flex-col  w-[30%] gap-2'>
+          <div className="flex items-center align-bottom justify-between">
+            <Span label="🧹Senha:"/>
+            <p className="text-xs font-bold">Senha no mínimo com 8 caracters</p>
+          </div>
+          <Input name='password' type="password" register={register}/>
+          {errors.password && <span className=" text-red-600">{errors.password.message}</span>}
+        </div>
+
+        <div className='flex flex-col  w-[30%] gap-2'>
+          <Span label="🧹Telefone:"/>
+          <Input type="text" name='telefone' register={register} />
+          {errors.telefone && <span className=" text-red-600">{errors.telefone.message}</span>}
+        </div>
+
+        <div className='flex flex-col  w-[30%] gap-2'>
+          <Span label="🧹Cep:"/>
+          <Input type="text" name='cep' register={register}/>
+          {errors.cep && <span className=" text-red-600">{errors.cep.message}</span>}
+        </div> 
+          <Button  type="submit" label="Enviar"/>
       </form>
-
-      <div className=" flex flex-col gap-4" >
-        {outPut}
-      </div>
-    </main>
   )
 }
