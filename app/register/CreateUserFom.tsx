@@ -9,6 +9,8 @@ import {useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateUserSchemaType} from "@/types/createUserSchema";
 import { createUserSchema } from "../schemas/createUserSchema";
+import { api } from "@/services/api";
+import axios from "axios";
 
 export default function CreateUserFom() {
   //Aqui vou resgatar as funcionalidades do useHookForm
@@ -21,9 +23,20 @@ export default function CreateUserFom() {
   
   //uma função para o handleSubmit
   function createUser(data:any){
-    
-    console.log("Dados da nova conta:",data)
+
+    const formatData = {
+      "name": data.nome,
+      "email": data.email,
+      "password": data.password,
+      "phone": data.telefone,
+      "zipcode": data.cep,
+    }
+
+     return formatData
+
   }
+
+  console.log("essa é a variavel de ambiente: ", api)
 
   return (
       <form onSubmit={handleSubmit(createUser)}
