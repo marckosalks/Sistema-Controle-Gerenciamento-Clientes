@@ -3,18 +3,11 @@
 import Button from "@/app/components/Button";
 import Input from "@/app/components/Input";
 import Span from "@/app/components/Span";
-
 import {useForm } from 'react-hook-form';
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateUserSchemaType} from "@/types/createUserSchema";
 import { createUserSchema } from "../schemas/createUserSchema";
-import { url }  from "@/services/api";
-import { getUser } from "@/services/get";
 import { postUser } from "@/services/post";
-
-
-
 
 export default function CreateUserFom() {
   //Aqui vou resgatar as funcionalidades do useHookForm
@@ -36,6 +29,7 @@ export default function CreateUserFom() {
       "zipcode": data.cep,
     }
     postUser(formatData)
+
   }
 
   return (
