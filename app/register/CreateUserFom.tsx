@@ -9,8 +9,12 @@ import {useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateUserSchemaType} from "@/types/createUserSchema";
 import { createUserSchema } from "../schemas/createUserSchema";
-import { api } from "@/services/api";
-import axios from "axios";
+import { url }  from "@/services/api";
+import { getUser } from "@/services/get";
+import { postUser } from "@/services/post";
+
+
+
 
 export default function CreateUserFom() {
   //Aqui vou resgatar as funcionalidades do useHookForm
@@ -31,12 +35,8 @@ export default function CreateUserFom() {
       "phone": data.telefone,
       "zipcode": data.cep,
     }
-
-     return formatData
-
+    postUser(formatData)
   }
-
-  console.log("essa é a variavel de ambiente: ", api)
 
   return (
       <form onSubmit={handleSubmit(createUser)}

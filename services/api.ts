@@ -1,5 +1,1 @@
-import axios from "axios";
-
-export const api = axios.create({
-  baseURL: process.env.BASE_URL
-})
+export const url = "http://localhost:3000/user"
