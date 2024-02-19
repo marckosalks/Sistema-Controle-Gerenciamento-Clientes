@@ -10,8 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Aqui eu criei a primeira tabela para ter as informações dos clientes
-
 model User {
   id        Int      @id @default(autoincrement())
   name      String

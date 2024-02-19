@@ -3,6 +3,12 @@
 ### Me basei nesse video aqui 
 https://www.youtube.com/watch?v=gnq8ZY85UUM
 
+#
+# Para inicializar o projeto é necessário rodar 
+### docker-componse up -d 
+### npm i
+### env generico: DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
+
 # Primeiro comando usado(criar arquivo de dependencias)
 npm init -y
 
