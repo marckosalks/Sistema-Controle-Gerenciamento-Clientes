@@ -8,8 +8,32 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateUserSchemaType} from "@/types/createUserSchema";
 import { createUserSchema } from "../schemas/createUserSchema";
 import { postUser } from "@/services/post";
+import toast from "react-hot-toast";
+import emailjs, { send } from "@emailjs/browser"
+import { useRouter } from "next/navigation";
+
+//send email quando a conta for criada
+function HandleSendEmail(name: string,  email:string, password:string){
+  const templateParams = {
+    to_name: name,
+    email: email,
+    password: password
+  }
+  
+  emailjs.send("service_4atnenl", 
+  "template_5pzawrb",
+  templateParams,
+  "sMn5adwNxqI3_Vv-e" )
+  .then((respose) => {
+    console.log("EMAIL ENVIADO", respose.status, respose.text)
+    toast.success("Meus parabéns, conta criada com sucesso!")
+  }, (err)=>{
+    console.log("ERRO:",err)
+  }) 
+}
 
 export default function CreateUserFom() {
+  const route = useRouter()
   //Aqui vou resgatar as funcionalidades do useHookForm
   const { 
     register,
@@ -28,8 +52,22 @@ export default function CreateUserFom() {
       "phone": data.telefone,
       "zipcode": data.cep,
     }
-    postUser(formatData)
 
+    
+    const response = postUser(formatData)
+   
+    response.then(test => {
+      const result = test
+      
+      if(result === "success"){
+        HandleSendEmail(formatData.name, formatData.email, formatData.password)
+        
+        route.push("/login")
+      }else{
+        toast.error("erro ao preencher o cadastro, tente novamente!")
+      }
+    })
+     
   }
 
   return (
