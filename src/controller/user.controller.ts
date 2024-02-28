@@ -26,22 +26,19 @@ export async function post(req: any, res:any) {
 //GET BY ID ---> LOGIN
 export async function get(req: any, res: any) {
   
-  const { email, password } = req.body
-  
   try{
-   
     const user = await getUserId(Number(req.params.id))
-    res.status(200).send(user)
-    console.log("Encontrei o usuário que voce procura! (:", user)
-  
-    //teste
-    console.log("AAAAAAAAAA olha nois ai!", user?.email )
-    console.log("AAAAAAAAAA olha nois ai!", user?.password)
-   
+    const isEmailValid = user && typeof user === 'object' && 'email' in user
+    const isPasswordValid = user && typeof user === 'object' && 'password' in user
 
+    if(isEmailValid && isPasswordValid){
+      res.status(200).send(user)
+      console.log("Autenticação realizada com sucesso! (:", user)
+    }
+  
   }catch(error: unknown){
     res.status(400).send(error)
-    console.log("Não encontrei esse usuário! );", error)
+    console.log("Credenciais inválidas! );", error)
   }
 }
 
