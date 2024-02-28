@@ -16,11 +16,11 @@ export async function postUser(data: unknown | any){
       id: true,
       name: true,
       email: true,
+      password: true,
       phone: true,
       zipcode: true,
       createdAt: true,
       updatedAt: true,
-      password: false,
     }
   })
   return user
@@ -35,6 +35,7 @@ export async function getUserId(id: number | undefined){
         id: true,
         name: true,
         email: true,
+        password: true,
         phone:true,
         zipcode: true,
         createdAt: true,
@@ -50,6 +51,7 @@ export async function getUsers(){
       id: true,
       name: true,
       email: true,
+      password: true,
       phone:true,
       zipcode: true,
     }  
@@ -67,6 +69,7 @@ export async function update(data: unknown | any , id: number | any){
       id: true,
       name: true,
       email: true,
+      password: true,
       phone:true,
       zipcode: true,
       createdAt: true,
