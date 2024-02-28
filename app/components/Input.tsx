@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-type InputProps = {
+export type InputProps = {
   type: "text" | "password" | "email" | "number" | "date"
   className?: string
   register: any

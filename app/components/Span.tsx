@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-type SpanProps = {
+export type SpanProps = {
   label: string
   className?: string
 }
