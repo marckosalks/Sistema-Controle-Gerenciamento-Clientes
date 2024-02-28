@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt"
 import {  deleteUser, getUserId, getUsers, postUser, update } from "../repositorys/user.repository";
 import { userValidation } from "../validation/user.validation";
-import { number } from "yup";
+
+// POST
 
 export async function post(req: any, res:any) {
   try{
@@ -21,8 +22,8 @@ export async function post(req: any, res:any) {
   }
 
 }
-//iniciando função get 
 
+//GET BY ID
 export async function get(req: any, res: any) {
   try{
     const user = await getUserId(Number(req.params.id))
@@ -35,6 +36,7 @@ export async function get(req: any, res: any) {
   }
 }
 
+//GET
 export async function getAll (req: any, res:any){
   try{
     const users = await getUsers()
