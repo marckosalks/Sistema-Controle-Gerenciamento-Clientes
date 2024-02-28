@@ -1,3 +1,5 @@
+'use client'
+
 import { logginUserSchemaType } from "@/types/logginUserSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -36,7 +38,8 @@ export default function LoginForm() {
 
   return (
       // aqui eu preciso usar o reacthookforms
-    <form onSubmit={handleSubmit(isLoggin)} >
+    <form onSubmit={handleSubmit(isLoggin)} 
+    className='flex flex-col gap-4 items-center'>
       <div className='flex flex-col  w-[30%] gap-2'>
           <Span label="🧹Email:"/>
           <Input name='email' type="email" register={register}/>
