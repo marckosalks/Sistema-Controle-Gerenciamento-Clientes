@@ -1,6 +1,10 @@
-import bcrypt from "bcrypt"
-import {  deleteUser, getUserId, getUsers, postUser, update } from "../repositorys/user.repository";
+import bcrypt, { compareSync } from "bcrypt"
+import {  deleteUser, getUsers, postUser, update } from "../repositorys/user.repository";
 import { userValidation } from "../validation/user.validation";
+import { JWT_SECRET } from "../secrets";
+import { prisma } from "../services/prisma";
+import * as jwt from 'jsonwebtoken'
+
 
 // POST
 
@@ -24,22 +28,28 @@ export async function post(req: any, res:any) {
 }
 
 //GET BY ID ---> LOGIN
-export async function get(req: any, res: any) {
-  
-  try{
-    const user = await getUserId(Number(req.params.id))
-    const isEmailValid = user && typeof user === 'object' && 'email' in user
-    const isPasswordValid = user && typeof user === 'object' && 'password' in user
+export async function login(req: any, res:any){  
+  //desestruturando emaile senha do body insomnia
+  const { email, password } = req.body;
 
-    if(isEmailValid && isPasswordValid){
-      res.status(200).send(user)
-      console.log("Autenticação realizada com sucesso! (:", user)
-    }
-  
-  }catch(error: unknown){
-    res.status(400).send(error)
-    console.log("Credenciais inválidas! );", error)
-  }
+  //armazenando em variavel o 
+  //usuário do prisma com o mesmo e-mail
+  let user = await prisma.user.findFirst({where:{email}})
+
+  //verifico se já existe
+  if (!user) {
+    throw Error("Usuário não existe!") // Retornar null se o usuário não foi encontrado
+}
+
+// Verifica se a senha fornecida corresponde à senha do usuário encontrado
+if (compareSync(user.password, password)) {
+  throw Error("Senha incorreta!")
+}
+const token = jwt.sign({
+  userId: user.id
+},JWT_SECRET)
+
+res.json({user, token})
 }
 
 //GET

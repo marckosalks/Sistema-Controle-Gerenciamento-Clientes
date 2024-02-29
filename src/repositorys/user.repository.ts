@@ -1,4 +1,6 @@
+
 import { prisma } from "../services/prisma"
+
 
 // metodo para cadastrar usuário 
 export type DataTypes = {
@@ -26,24 +28,7 @@ export async function postUser(data: unknown | any){
   return user
 } 
 
-export async function getUserId(id: number | undefined){
-    const userId = await prisma.user.findUnique({
-      where: {
-        id,
-      },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        password: true,
-        phone:true,
-        zipcode: true,
-        createdAt: true,
-        updatedAt: true,
-      }
-    })
-    return userId
-}
+
 
 export async function getUsers(){
   const listUsers = await prisma.user.findMany({
