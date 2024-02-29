@@ -37,8 +37,8 @@ export default function CreateUserFom() {
     
     const response = postUser(formatData)
    
-    response.then(test => {
-      const result = test
+    response.then(body => {
+      const result = body
       
       if(result === "success"){
         HandleSendEmail(formatData.name, formatData.email, formatData.password)

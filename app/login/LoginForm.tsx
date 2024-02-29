@@ -4,14 +4,15 @@ import { logginUserSchemaType } from "@/types/logginUserSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import Button from "../components/Button"
-import { getUser } from "@/services/get"
 import toast from "react-hot-toast"
 import { logginUserSchema } from "../schemas/logginUserSchema"
 import  Span  from "@/app/components/Span"
 import  Input  from "@/app/components/Input"
+import { loginUser } from "@/services/auth"
+import { useRouter } from "next/navigation"
 
 export default function LoginForm() {
-  
+  const route = useRouter()
   const { 
     register,
     handleSubmit, 
@@ -19,21 +20,24 @@ export default function LoginForm() {
     resolver: zodResolver(logginUserSchema)
   })
 
-  function isLoggin(){
-    console.log("Usuários existe na base ?")
+  async function isLoggin(data:logginUserSchemaType){
+    console.log("Usuários existe na base ?", data)
     
-    const response = getUser()
+    //consumindo metodo post
+    try{
+      const response = await loginUser(data)
 
-    response.then( usuario =>{
-      const result = usuario
-
-      if(result == 'encontrei'){
-        toast.success('Seja bem vindo!')
+      if(response.token){
+        toast.success("Seja bem-do meu nobre!")
+        route.push('/private')
       }else{
-        toast.error('tente novamente')
+        toast.error("Credenciais inválidas!")
       }
-    })
-
+    }catch(error: unknown){
+      toast.error("Erro ao efetuar login")
+      console.error("Erro ao efetuar login:", error);
+    }
+    
   }
 
   return (
