@@ -1,4 +1,4 @@
-# Banco de dados  e Backend com Docker Express Typescript e Prisma
+# Banco de dados  e Backend com Docker Node Express Typescript e Prisma
 
 ### Me basei nesse video aqui 
 https://www.youtube.com/watch?v=gnq8ZY85UUM
